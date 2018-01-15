@@ -32,12 +32,12 @@ if ($response->getStatusCode() == 200){
             $responseResume = $client->request('POST', '/resumes/'.$idResume.'/publish', $headers);
             if ($responseResume->getStatusCode()==204){
                 //very good
-                file_put_contents('log.txt',$date->format('d-m-Y H:s:i')."\n".
+                file_put_contents('log.txt',$date->format('d-m-Y H:i:s')."\n".
                     $responseResume->getBody()."\n", FILE_APPEND);
             }
         }
         catch (ClientException $e){
-            file_put_contents('log.txt',$date->format('d-m-Y H:s:i')."\n".
+            file_put_contents('log.txt',$date->format('d-m-Y H:i:s')."\n".
                 $e->getMessage()."\n", FILE_APPEND);
         }
     }
